@@ -17,6 +17,8 @@ public class ClientHandler extends DefaultHandler{
 	private boolean inAnnuaire, inPersonne, inNom, inPrenom, inAdresse, inCourriel, 
 					inTel, inAnniversaire, inVille, inProvince, inMDP, inCP, inForfait;
 	
+	private boolean inCC, inEmetteur, inMois, inAnnee;
+	
 	//buffer nous permettant de récupérer les données 
 	private StringBuffer buffer;
 
@@ -60,6 +62,14 @@ public class ClientHandler extends DefaultHandler{
 				inProvince = true;
 			} else if (qName.equals("code-postal")) {
 				inCP = true;
+			} else if (qName.equals("no")) {
+				inCC = true;
+			} else if (qName.equals("carte")) {
+				inEmetteur = true;
+			} else if (qName.equals("exp-annee")) {
+				inAnnee = true;
+			} else if (qName.equals("exp-mois")) {
+				inMois = true;
 			} else if (qName.equals("mot-de-passe")) {
 				inMDP = true;
 			} else if (qName.equals("forfait")) {
@@ -115,6 +125,22 @@ public class ClientHandler extends DefaultHandler{
 			client.setCP(buffer.toString());
 			buffer = null;
 			inCP = false;
+		} else if (qName.equals("no")) {
+			client.setCC(buffer.toString());
+			buffer = null;
+			inCC = false;
+		} else if (qName.equals("carte")) {
+			client.setCCEmetteur(buffer.toString());
+			buffer = null;
+			inEmetteur = false;
+		} else if (qName.equals("exp-mois")) {
+			client.setCCMois(buffer.toString());
+			buffer = null;
+			inMois = false;
+		} else if (qName.equals("exp-annee")) {
+			client.setCCAnnee(buffer.toString());
+			buffer = null;
+			inAnnee = false;
 		} else if (qName.equals("mot-de-passe")) {
 			client.setMDP(buffer.toString());
 			buffer = null;
