@@ -1,5 +1,6 @@
-import java.util.ArrayList;
+package xml;
 
+import java.util.ArrayList;
 
 public class Film {
 		private int idFilm;
@@ -24,8 +25,8 @@ public class Film {
 		public ArrayList<Integer> getIdActeur(){return idActeur;}
 		public String getActeur(){return acteur;}
 		public String getPersonnage(){return personnage;}
-		
-		
+
+
 		public void setIdFilm(int idFilm){this.idFilm = idFilm;}
 		public void setTitre(String titre){this.titre = titre;}
 		public void setAnnee(String annee){this.annee = annee;}
@@ -40,8 +41,8 @@ public class Film {
 		public void setActeur(String acteur){this.infoRole[0] = acteur;}
 		public void setPersonnage(String personnage){
 			this.infoRole[1] = personnage;
-			role.add(infoRole);}	
-		
+			role.add(infoRole);}
+
 
 		public String toString(){
 			return new StringBuffer("titre : ").append(titre).append(", ")
