@@ -1,3 +1,4 @@
+package xml;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,19 +9,19 @@ import org.xml.sax.helpers.DefaultHandler;
 
 
 public class PersonneHandler extends DefaultHandler{
-	//résultats de notre parsing
+	//resultats de notre parsing
 	private List<Personne> annuaire;
 	private Personne personne;
 	//flags nous indiquant la position du parseur
 	private boolean inAnnuaire, inPersonne, inNom, inNaissance, inAnniversaire, inLieu, inBio, inPhoto;
-	//buffer nous permettant de récupérer les données 
+	//buffer nous permettant de recuperer les données
 	private StringBuffer buffer;
 
 	// simple constructeur
 	public PersonneHandler(){
 		super();
 	}
-	//détection d'ouverture de balise
+	//detection d'ouverture de balise
 	public void startElement(String uri, String localName,
 			String qName, Attributes attributes) throws SAXException{
 		if(qName.equals("personnes")){
@@ -57,7 +58,7 @@ public class PersonneHandler extends DefaultHandler{
 			}
 		}
 	}
-	//détection fin de balise
+	//detection fin de balise
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException{
 		if(qName.equals("clients")){
@@ -93,15 +94,15 @@ public class PersonneHandler extends DefaultHandler{
 		}else{
 			//erreur, on peut lever une exception
 //			throw new SAXException("Balise "+qName+" inconnue.");
-		}          
+		}
 	}
-	//détection de caractères
+	//detection de caracteres
 	public void characters(char[] ch,int start, int length)
 			throws SAXException{
 		String lecture = new String(ch,start,length);
-		if(buffer != null) buffer.append(lecture);       
+		if(buffer != null) buffer.append(lecture);
 	}
-	//début du parsing
+	//debut du parsing
 	public void startDocument() throws SAXException {
 		System.out.println("Début du parsing");
 	}
